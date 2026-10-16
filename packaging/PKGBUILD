@@ -9,7 +9,8 @@ pkgver=2.1.0
 pkgrel=1
 pkgdesc="Mira para juegos en Linux, con overlay sobre Wayland, bandeja y ajustes"
 arch=('any')
-url="https://github.com/kerytos29/crosshair"
+_reponame="Toast-Crosshair-Linux-"
+url="https://github.com/kerytos29/$_reponame"
 license=('MIT')
 depends=(
   'python'
@@ -25,18 +26,18 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_reponame-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_reponame-$pkgver"
   # Las pruebas de la interfaz necesitan una plataforma Qt sin pantalla
   QT_QPA_PLATFORM=offscreen python -m unittest discover -s tests
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_reponame-$pkgver"
   # El wheel ya trae el archivo .desktop y el icono en share/
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
