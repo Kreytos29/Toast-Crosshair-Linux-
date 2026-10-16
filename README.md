@@ -1,5 +1,7 @@
 # Crosshair
 
+Mira más proyectos en el [portafolio](https://portafolio-rho-snowy.vercel.app/).
+
 Una mira para juegos en Linux. Se dibuja encima de todas las ventanas, deja
 pasar los clics y se controla desde un icono en la bandeja del sistema.
 
