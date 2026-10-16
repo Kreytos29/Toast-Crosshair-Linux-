@@ -1,7 +1,6 @@
-# Borrador de PKGBUILD para el AUR. NO está probado en Arch todavía: antes de
-# subirlo, comprueba que `makepkg -si` funciona y pasa `namcap` al paquete.
-#
-# Para publicarlo hay que rellenar url y source con el repositorio de verdad.
+# Probado: `makepkg` construye el paquete en Arch y pasan las pruebas de check().
+# Falta pasar `namcap` y probar la instalación completa antes de subirlo al AUR.
+# Requiere que exista el tag v$pkgver en GitHub.
 #
 # Maintainer: Kreytos29
 pkgname=crosshair
