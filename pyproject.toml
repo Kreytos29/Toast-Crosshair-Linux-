@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crosshair-overlay"
+version = "2.1.0"
+description = "Mira para juegos en Linux: overlay sobre Wayland con bandeja y ajustes"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Kreytos29" }]
+keywords = ["crosshair", "overlay", "wayland", "hyprland", "layer-shell", "gaming"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Games/Entertainment",
+]
+
+# PyGObject y pycairo suelen instalarse desde la distribución (en Arch,
+# python-gobject y python-cairo). Se declaran igual para que «pip install .»
+# en un entorno virtual sepa qué falta.
+dependencies = [
+    "PyQt6>=6.4",
+    "PyGObject>=3.42",
+    "pycairo>=1.20",
+]
+
+[project.scripts]
+crosshair = "crosshair.cli:main"
+
+[tool.setuptools]
+packages = ["crosshair", "crosshair.overlay", "crosshair.ui"]
+
+# Integración con el escritorio. Quien empaquete para una distribución puede
+# instalar estos archivos por su cuenta en lugar de usar esta sección.
+[tool.setuptools.data-files]
+"share/applications" = ["data/crosshair.desktop"]
+"share/icons/hicolor/scalable/apps" = ["data/icons/crosshair.svg"]

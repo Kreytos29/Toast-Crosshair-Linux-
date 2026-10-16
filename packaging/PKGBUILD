@@ -1,0 +1,44 @@
+# Borrador de PKGBUILD para el AUR. NO está probado en Arch todavía: antes de
+# subirlo, comprueba que `makepkg -si` funciona y pasa `namcap` al paquete.
+#
+# Para publicarlo hay que rellenar url y source con el repositorio de verdad.
+#
+# Maintainer: Kreytos29
+pkgname=crosshair
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="Mira para juegos en Linux, con overlay sobre Wayland, bandeja y ajustes"
+arch=('any')
+url="https://github.com/kerytos29/crosshair"
+license=('MIT')
+depends=(
+  'python'
+  'python-pyqt6'
+  'python-gobject'
+  'python-cairo'
+  'gtk4'
+  'gtk4-layer-shell'
+)
+optdepends=('qt6-svg: importar miras en formato SVG')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  # Las pruebas de la interfaz necesitan una plataforma Qt sin pantalla
+  QT_QPA_PLATFORM=offscreen python -m unittest discover -s tests
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  # El wheel ya trae el archivo .desktop y el icono en share/
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}

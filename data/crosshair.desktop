@@ -1,0 +1,24 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Crosshair
+GenericName=Mira para juegos
+GenericName[en]=Game crosshair
+Comment=Muestra una mira encima de los juegos
+Comment[en]=Shows a crosshair overlay on top of your games
+Exec=crosshair
+Icon=crosshair
+Terminal=false
+Categories=Game;Utility;
+Keywords=crosshair;mira;overlay;retícula;fps;
+StartupNotify=false
+StartupWMClass=crosshair
+Actions=Toggle;NextProfile;
+
+[Desktop Action Toggle]
+Name=Activar o desactivar la mira
+Exec=crosshair --toggle
+
+[Desktop Action NextProfile]
+Name=Perfil siguiente
+Exec=crosshair --next-profile
