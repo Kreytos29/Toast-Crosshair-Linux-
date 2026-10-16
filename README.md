@@ -37,7 +37,7 @@ python run.py
 ## Instalar
 
 ```sh
-git clone https://github.com/kerytos29/Toast-Crosshair-Linux-
+git clone https://github.com/Kreytos29/Toast-Crosshair-Linux-
 cd Toast-Crosshair-Linux-
 ./install.sh
 ```

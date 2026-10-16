@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Mira para juegos en Linux, con overlay sobre Wayland, bandeja y ajustes"
 arch=('any')
 _reponame="Toast-Crosshair-Linux-"
-url="https://github.com/kerytos29/$_reponame"
+url="https://github.com/Kreytos29/$_reponame"
 license=('MIT')
 depends=(
   'python'
